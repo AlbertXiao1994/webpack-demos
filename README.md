@@ -1,6 +1,7 @@
-This repo is a collection of simple demos of Webpack.
+这个仓库收集了一些Webpack的简单demo。
 
 These demos are purposely written in a simple and clear style. You will find no difficulty in following them to learn the powerful tool.
+我旨在通过简明的方式来写这些demo。跟着它们，你将轻松地学习这一强大的工具。
 
 ## How to use
 
