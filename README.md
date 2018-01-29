@@ -1,51 +1,50 @@
 这个仓库收集了一些Webpack的简单demo。
 
-These demos are purposely written in a simple and clear style. You will find no difficulty in following them to learn the powerful tool.
 我旨在通过简明的方式来写这些demo。跟着它们，你将轻松地学习这一强大的工具。
 
-## How to use
+## 如何使用
 
-First, install [Webpack](https://www.npmjs.com/package/webpack) and [webpack-dev-server](https://www.npmjs.com/package/webpack-dev-server) globally.
+首先，全局安装[Webpack](https://www.npmjs.com/package/webpack) and [webpack-dev-server](https://www.npmjs.com/package/webpack-dev-server)
 
 ```bash
 $ npm i -g webpack webpack-dev-server
 ```
 
-Then, clone the repo.
+之后，复制这个库到本地。
 
 ```bash
 $ git clone https://github.com/ruanyf/webpack-demos.git
 ```
 
-Install the dependencies.
+接着，安装所有依赖。
 
 ```bash
 $ cd webpack-demos
 $ npm install
 ```
 
-Now, play with the source files under the repo's demo* directories.
+现在，按顺序在这些以demo开头的目录下运行源文件。像这样：
 
 ```bash
 $ cd demo01
 $ npm run dev
 ```
 
-If the above command doesn't open your browser automaticly, you have to visit http://127.0.0.1:8080 by yourself.
+如果以上命令没有自动打开你的浏览器，恐怕你需要自行访问http://127.0.0.1:8080。
 
-## Foreword: What is Webpack
+## 前言：Webpack是什么
 
-Webpack is a front-end tool to build JavaScript module scripts for browsers.
+Webpack是一个为浏览器构建JavaScript模块脚本的前端工具。
 
-It can be used similar to Browserify, and do much more.
+它用起来和Browserify很像，但功能更强大。
 
 ```bash
 $ browserify main.js > bundle.js
-# be equivalent to
+# 等同于
 $ webpack main.js bundle.js
 ```
 
-Webpack needs a configuration file called `webpack.config.js` which is just a CommonJS module.
+Webpack需要一个叫做`webpack.config.js`配置文件，而它其实就是一个CommonJS文件。
 
 ```javascript
 // webpack.config.js
@@ -57,19 +56,20 @@ module.exports = {
 };
 ```
 
-After having `webpack.config.js`, you can invoke Webpack without any arguments.
+在配置好`webpack.config.js`文件后，你能在没有任何参数的情况下启动webpack。
 
 ```bash
 $ webpack
 ```
 
 Some command-line options you should know.
+下面这些命令行选项你需要知道：
 
-- `webpack` – building for development
-- `webpack -p` – building for production (minification)
-- `webpack --watch` – for continuous incremental building
-- `webpack -d` – including source maps
-- `webpack --colors` – making building output pretty
+- `webpack` – 开发环境下编译
+- `webpack -p` – 生产环境下编译 (压缩)
+- `webpack --watch` – 监听文件变动并自动编译
+- `webpack -d` – 包含source maps（译者注：source maps为源码转化后的位置信息文件）
+- `webpack --colors` – 生成带有颜色编译输出
 
 You could customize `scripts` field in your package.json file as following.
 
