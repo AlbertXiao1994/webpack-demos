@@ -68,7 +68,7 @@ Some command-line options you should know.
 - `webpack` – 开发环境下打包
 - `webpack -p` – 生产环境下打包 (压缩)
 - `webpack --watch` – 监听文件变化并自动打包
-- `webpack -d` – 包含source maps（译者注：source maps为源码转化后的位置信息文件）
+- `webpack -d` – 包含source maps（译注：source maps为源码转化后的位置信息文件）
 - `webpack --colors` – 生成带有颜色的打包输出信息
 
 你可以像下面这样在你的package.json文件中自定义`scripts`项。
@@ -92,8 +92,8 @@ Some command-line options you should know.
 1. [Babel-loader](#demo03-babel-loader-source)
 1. [CSS-loader](#demo04-css-loader-source)
 1. [Image loader](#demo05-image-loader-source)
-1. [CSS Module](#demo06-css-module-source)
-1. [UglifyJs Plugin](#demo07-uglifyjs-plugin-source)
+1. [CSS模块](#demo06-css-module-source)
+1. [UglifyJs插件](#demo07-uglifyjs-plugin-source)
 1. [HTML Webpack Plugin and Open Browser Webpack Plugin](#demo08-html-webpack-plugin-and-open-browser-webpack-plugin-source)
 1. [Environment flags](#demo09-environment-flags-source)
 1. [Code splitting](#demo10-code-splitting-source)
@@ -103,7 +103,7 @@ Some command-line options you should know.
 1. [Exposing Global Variables](#demo14-exposing-global-variables-source)
 1. [React router](#demo15-react-router-source)
 
-## Demo01: Entry file ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo01))
+## Demo01: 入口文件([source](https://github.com/ruanyf/webpack-demos/tree/master/demo01))
 
 Webpack读取入口文件来生成`bundle.js`。
 
@@ -238,7 +238,7 @@ module.exports = {
 
 ## Demo04: CSS-loader ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo04))
 
-Webpack allows you to include CSS in JS file, then preprocessed CSS file with [CSS-loader](https://github.com/webpack-contrib/css-loader).
+Webpack允许你在JS文件中包含CSS，它将通过[CSS-loader](https://github.com/webpack-contrib/css-loader)来预处理这些CSS。
 
 main.js
 
@@ -286,16 +286,16 @@ module.exports = {
 };
 ```
 
-Attention, you have to use two loaders to transform CSS file. First is [CSS-loader](https://www.npmjs.com/package/css-loader) to read CSS file, and another one is [Style-loader](https://www.npmjs.com/package/style-loader) to insert `<style>` tag into HTML page.
+注意，你需要两个loader来转换CSS文件。一个是[CSS-loader](https://www.npmjs.com/package/css-loader)来读CSS文件，另一个是[Style-loader](https://www.npmjs.com/package/style-loader)来将`<style>`标签插入HTML页面中。
 
-Then, launch the server.
+之后，启动webpack server。
 
 ```bash
 $ cd demo04
 $ npm run dev
 ```
 
-Actually, Webpack inserts an internal style sheet into `index.html`.
+其实，Webpack将内联样式表插入了`index.html`。
 
 ```html
 <head>
@@ -310,7 +310,7 @@ Actually, Webpack inserts an internal style sheet into `index.html`.
 
 ## Demo05: Image loader ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo05))
 
-Webpack could also include images in JS files.
+Webpack也能在JS文件包含图片。
 
 main.js
 
@@ -360,18 +360,18 @@ module.exports = {
 };
 ```
 
-[url-loader](https://www.npmjs.com/package/url-loader) transforms image files into `<img>` tag. If the image size is smaller than 8192 bytes, it will be transformed into Data URL; otherwise, it will be transformed into normal URL.
+[url-loader](https://www.npmjs.com/package/url-loader)将图片文件转换成`<img>`标签。如果图片尺寸小于8192字节，它会被转换成Data URL（译注：Data URL是将图片用base64编码后的字符串）；否则，它将转换成普通URL。
 
-After launching the server, `small.png` and `big.png` have the following URLs.
+在启动server后，`small.png`和`big.png`分别将有以下URL：
 
 ```html
 <img src="data:image/png;base64,iVBOR...uQmCC">
 <img src="4853ca667a2b8b8844eb2693ac1b2578.png">
 ```
 
-## Demo06: CSS Module ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo06))
+## Demo06: CSS模块([source](https://github.com/ruanyf/webpack-demos/tree/master/demo06))
 
-`css-loader?modules` (the query parameter modules) enables the [CSS Module](https://github.com/css-modules/css-modules) which gives a local scoped CSS to your JS module's CSS. You can switch it off with `:global(selector)` ([more info](https://css-modules.github.io/webpack-demo/)).
+带查询参数`modules`的css-loader将CSS文件变为一个[CSS模块](https://github.com/css-modules/css-modules)，模块里的CSS都是局部定义的。你可以使用`:global(selector)`([详情](https://css-modules.github.io/webpack-demo/))将CSS变为全局的。
 
 index.html
 
@@ -455,18 +455,18 @@ module.exports = {
 };
 ```
 
-Launch the server.
+启动webpack server。
 
 ```bash
 $ cd demo06
 $ npm run dev
 ```
 
-Visiting http://127.0.0.1:8080 , you'll find that only second `h1` is red, because its CSS is local scoped, and both `h2` is blue, because its CSS is global scoped.
+访问http://127.0.0.1:8080 ，你将发现只有第二个`h1`是红色的，因为它的CSS是局部的；而两个`h2`都是蓝色的，因为它的CSS是全局的。
 
-## Demo07: UglifyJs Plugin ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo07))
+## Demo07: UglifyJs插件([source](https://github.com/ruanyf/webpack-demos/tree/master/demo07))
 
-Webpack has a plugin system to expand its functions. For example, [UglifyJs Plugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/) will minify output(`bundle.js`) JS codes.
+Webpack通过插件体系来扩展它的功能。例如，[UglifyJs插件](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/)能够压缩输出的JS文件(`bundle.js`)。
 
 main.js
 
