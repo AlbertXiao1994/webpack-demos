@@ -30,7 +30,7 @@ $ cd demo01
 $ npm run dev
 ```
 
-如果以上命令没有自动打开你的浏览器，恐怕你需要自行访问http://127.0.0.1:8080。
+如果以上命令没有自动打开你的浏览器，恐怕你需要自行访问http://127.0.0.1:8080 。
 
 ## 前言：Webpack是什么
 
@@ -65,13 +65,13 @@ $ webpack
 Some command-line options you should know.
 下面这些命令行选项你需要知道：
 
-- `webpack` – 开发环境下编译
-- `webpack -p` – 生产环境下编译 (压缩)
-- `webpack --watch` – 监听文件变动并自动编译
+- `webpack` – 开发环境下打包
+- `webpack -p` – 生产环境下打包 (压缩)
+- `webpack --watch` – 监听文件变化并自动打包
 - `webpack -d` – 包含source maps（译者注：source maps为源码转化后的位置信息文件）
-- `webpack --colors` – 生成带有颜色编译输出
+- `webpack --colors` – 生成带有颜色的打包输出信息
 
-You could customize `scripts` field in your package.json file as following.
+你可以像下面这样在你的package.json文件中自定义`scripts`项。
 
 ```javascript
 // package.json
@@ -85,10 +85,10 @@ You could customize `scripts` field in your package.json file as following.
 }
 ```
 
-## Index
+## 目录
 
-1. [Entry file](#demo01-entry-file-source)
-1. [Multiple entry files](#demo02-multiple-entry-files-source)
+1. [入口文件](#demo01-entry-file-source)
+1. [多个入口文件](#demo02-multiple-entry-files-source)
 1. [Babel-loader](#demo03-babel-loader-source)
 1. [CSS-loader](#demo04-css-loader-source)
 1. [Image loader](#demo05-image-loader-source)
@@ -105,15 +105,14 @@ You could customize `scripts` field in your package.json file as following.
 
 ## Demo01: Entry file ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo01))
 
-Entry file is a file which Webpack reads to build `bundle.js`.
+Webpack读取入口文件来生成`bundle.js`。
 
-For example, `main.js` is an entry file.
+例如，`main.js`就是这样一个入口文件。
 
 ```javascript
 // main.js
 document.write('<h1>Hello World</h1>');
 ```
-
 index.html
 
 ```html
@@ -124,7 +123,7 @@ index.html
 </html>
 ```
 
-Webpack follows `webpack.config.js` to build `bundle.js`.
+Webpack按照`webpack.config.js`里的配置来生成`bundle.js`。
 
 ```javascript
 // webpack.config.js
@@ -136,16 +135,16 @@ module.exports = {
 };
 ```
 
-Launch the server, visit http://127.0.0.1:8080 .
+启动webpack server，访问http://127.0.0.1:8080 。
 
 ```bash
 $ cd demo01
 $ npm run dev
 ```
 
-## Demo02: Multiple entry files ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo02))
+## Demo02: 多个入口文件 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo02))
 
-Multiple entry files are allowed. It is useful for a multi-page app which has different entry file for each page.
+有多个入口文件也是允许的。对于有多个不同入口文件的多页应用来说这会很有用。
 
 ```javascript
 // main1.js
@@ -182,11 +181,11 @@ module.exports = {
 
 ## Demo03: Babel-loader ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo03))
 
-Loaders are preprocessors which transform a resource file of your app ([more info](http://webpack.github.io/docs/using-loaders.html)) before Webpack's building process.
+xxx-loader([more info](https://webpack.js.org/concepts/loaders/) 是在Webpack打包前转换项目里资源文件的预处理器。
 
-For example, [Babel-loader](https://www.npmjs.com/package/babel-loader) can transform JSX/ES6 file into normal JS files，after which Webpack will begin to build these JS files. Webpack's official doc has a complete list of [loaders](http://webpack.github.io/docs/list-of-loaders.html).
+例如，[Babel-loader](https://www.npmjs.com/package/babel-loader)能够将JSX/ES6文件转换成普通的JS文件，之后，Webpack再打包它们。Webpack的官方文档里列出了完整的[loaders](https://webpack.js.org/loaders/)。
 
-`main.jsx` is a JSX file.
+`main.jsx`是一个JSX文件。
 
 ```javascript
 // main.jsx
@@ -235,7 +234,7 @@ module.exports = {
 };
 ```
 
-The above snippet uses `babel-loader` which needs Babel's preset plugins [babel-preset-es2015](https://www.npmjs.com/package/babel-preset-es2015) and [babel-preset-react](https://www.npmjs.com/package/babel-preset-react) to transpile ES6 and React.
+以上代码在使用`babel-loader`时，需要Babel的预设插件[babel-preset-es2015](https://www.npmjs.com/package/babel-preset-es2015)和[babel-preset-react](https://www.npmjs.com/package/babel-preset-react)来转换ES6和React。
 
 ## Demo04: CSS-loader ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo04))
 
