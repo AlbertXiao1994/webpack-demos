@@ -94,16 +94,16 @@ Some command-line options you should know.
 1. [Image loader](#demo05-image-loader-source)
 1. [CSS模块](#demo06-CSS模块-source)
 1. [UglifyJs插件](#demo07-UglifyJs插件-source)
-1. [HTML Webpack插件和Open Browser Webpack插件](#demo08-HTML Webpack插件和Open Browser Webpack插件-source)
-1. [Environment flags](#demo09-environment-flags-source)
-1. [Code splitting](#demo10-code-splitting-source)
-1. [Code splitting with bundle-loader](#demo11-code-splitting-with-bundle-loader-source)
-1. [Common chunk](#demo12-common-chunk-source)
-1. [Vendor chunk](#demo13-vendor-chunk-source)
-1. [Exposing Global Variables](#demo14-exposing-global-variables-source)
+1. [HTML Webpack插件和Open Browser Webpack插件](#demo08-HTML-Webpack插件和Open-Browser-Webpack插件-source)
+1. [环境标志](#demo09-环境标志-source)
+1. [代码分割](#demo10-代码分割-source)
+1. [使用bundle-loader进行代码分割](#demo11-使用bundle-loader进行代码分割-source)
+1. [共同块](#demo12-共同块-source)
+1. [依赖块](#demo13-依赖块-source)
+1. [暴露全局变量](#demo14-暴露全局变量-source)
 1. [React router](#demo15-react-router-source)
 
-## Demo01: 入口文件 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo01))
+## Demo01: 入口文件 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo01))
 
 Webpack读取入口文件来生成`bundle.js`。
 
@@ -142,7 +142,7 @@ $ cd demo01
 $ npm run dev
 ```
 
-## Demo02: 多个入口文件 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo02))
+## Demo02: 多个入口文件 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo02))
 
 有多个入口文件也是允许的。对于有多个不同入口文件的多页应用来说这会很有用。
 
@@ -179,7 +179,7 @@ module.exports = {
 };
 ```
 
-## Demo03: Babel-loader ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo03))
+## Demo03: Babel-loader ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo03))
 
 xxx-loader([more info](https://webpack.js.org/concepts/loaders/) 是在Webpack打包前转换项目里资源文件的预处理器。
 
@@ -236,7 +236,7 @@ module.exports = {
 
 以上代码在使用`babel-loader`时，需要Babel的预设插件[babel-preset-es2015](https://www.npmjs.com/package/babel-preset-es2015)和[babel-preset-react](https://www.npmjs.com/package/babel-preset-react)来转换ES6和React。
 
-## Demo04: CSS-loader ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo04))
+## Demo04: CSS-loader ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo04))
 
 Webpack允许你在JS文件中包含CSS，它将通过[CSS-loader](https://github.com/webpack-contrib/css-loader)来预处理这些CSS。
 
@@ -308,7 +308,7 @@ $ npm run dev
 </head>
 ```
 
-## Demo05: Image loader ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo05))
+## Demo05: Image loader ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo05))
 
 Webpack也能在JS文件包含图片。
 
@@ -369,7 +369,7 @@ module.exports = {
 <img src="4853ca667a2b8b8844eb2693ac1b2578.png">
 ```
 
-## Demo06: CSS模块 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo06))
+## Demo06: CSS模块 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo06))
 
 带查询参数`modules`的css-loader将CSS文件变为一个[CSS模块](https://github.com/css-modules/css-modules)，模块里的CSS都是局部定义的。你可以使用`:global(selector)`([详情](https://css-modules.github.io/webpack-demo/))将CSS变为全局的。
 
@@ -464,7 +464,7 @@ $ npm run dev
 
 访问http://127.0.0.1:8080 ，你将发现只有第二个`h1`是红色的，因为它的CSS是局部的；而两个`h2`都是蓝色的，因为它的CSS是全局的。
 
-## Demo07: UglifyJs插件 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo07))
+## Demo07: UglifyJs插件 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo07))
 
 Webpack通过插件体系来扩展它的功能。例如，[UglifyJs插件](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/)能够压缩输出(`bundle.js`)的JS代码。
 
@@ -509,7 +509,7 @@ module.exports = {
 var o="Hello";o+=" World",document.write("<h1>"+o+"</h1>")
 ```
 
-## Demo08: HTML Webpack插件和Open Browser Webpack插件 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo08))
+## Demo08: HTML Webpack插件和Open Browser Webpack插件 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo08))
 
 这个demo像你演示如何载入第三方插件。
 
@@ -553,7 +553,7 @@ $ npm run dev
 
 现在你不必再手写`index.html`了，也不必再自己打开浏览器了。Webpack将会为你做这些事。
 
-## Demo09: 环境标志 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo09))
+## Demo09: 环境标志 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo09))
 
 你可以通过环境标志让某些代码仅在开发环境下有效。
 
@@ -615,7 +615,7 @@ $ cd demo09
 $ npm run dev
 ```
 
-## Demo10: 代码拆分 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo10))
+## Demo10: 代码拆分 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo10))
 
 对于大型web应用来说，将所有的代码写进一个文件效率会很低。Webpack允许你将大的JS文件拆分成若干个小的代码块（chunk)。尤其在一些代码块仅在某些情况下才使用时，这些代码块应该按需加载。
 
@@ -668,7 +668,7 @@ $ npm run dev
 
 表面上，你不会感觉到任何变化。然而，Webpack实际上将`main.js`和`a.js`打包成了不同的块（`bundle.js`和`0.bundle.js`)，并且在需要时从`bundle.js`载入`0.bundle.js`。
 
-## Demo11: 使用bundle-loader进行代码分割 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo11))
+## Demo11: 使用bundle-loader进行代码分割 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo11))
 
 另一种代码分割的方式是使用[bundle-loader](https://www.npmjs.com/package/bundle-loader)。
 
@@ -691,7 +691,7 @@ load(function(file) {
 
 现在Webpack将会把`main.js`打包成`bundle.js`，把`a.js`打包成`0.bundle.js`。
 
-## Demo12: 共同块 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo12))
+## Demo12: 共同块 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo12))
 
 当多个脚本有共同的代码块时，你可以用[CommonsChunkPlugin](https://webpack.js.org/plugins/commons-chunk-plugin/)将它们导入一个单独的文件，这有助于浏览器缓存以及节省带宽。
 
@@ -770,7 +770,7 @@ module.exports = {
 }
 ```
 
-## Demo13: 依赖块 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo13))
+## Demo13: 依赖块 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo13))
 
 通过CommonsChunkPlugin，你也能将依赖库从脚本中导入一个单独的文件。
 
@@ -845,7 +845,7 @@ module.exports = {
 
 当然，在这个例子中，你应该自己全局导入`jquery.js`。
 
-## Demo14: 暴露全局变量 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo14))
+## Demo14: 暴露全局变量 ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo14))
 
 If you want to use some global variables, and don't want to include them in the Webpack bundle, you can enable `externals` field in `webpack.config.js` ([official document](https://webpack.js.org/configuration/externals/)).
 
@@ -916,11 +916,11 @@ ReactDOM.render(
 
 你也能将`react`和`react-dom`放入`externals`里，这将极大地减小`bundle.js`的编译时间和大小。
 
-## Demo15: React router ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo15))
+## Demo15: React router ([源码](https://github.com/ruanyf/webpack-demos/tree/master/demo15))
 
-This demo uses webpack to build [React-router](https://github.com/rackt/react-router/blob/0.13.x/docs/guides/overview.md)'s official example.
+这个demo使用webpack来构建[React-router](https://reacttraining.com/react-router/web/guides/philosophy)的官方例子。
 
-Let's imagine a little app with a dashboard, inbox, and calendar.
+想象一个有着仪表板、收信箱和日历的小应用。
 
 ```
 +---------------------------------------------------------+
@@ -1056,14 +1056,14 @@ index.html
 </htmL>
 ```
 
-Launch the server.
+启动server。
 
 ```bash
 $ cd demo15
 $ npm run dev
 ```
 
-## Useful links
+## 有用的链接
 
 - [Webpack docs](https://webpack.js.org/concepts/)
 - [webpack-howto](https://github.com/petehunt/webpack-howto), by Pete Hunt
@@ -1072,6 +1072,6 @@ $ npm run dev
 - [Webpack and React is awesome](http://www.christianalfoni.com/articles/2014_12_13_Webpack-and-react-is-awesome), by Christian Alfoni
 - [Browserify vs Webpack](https://medium.com/@housecor/browserify-vs-webpack-b3d7ca08a0a9), by Cory House
 
-## License
+## 许可证
 
 MIT
