@@ -369,7 +369,7 @@ module.exports = {
 <img src="4853ca667a2b8b8844eb2693ac1b2578.png">
 ```
 
-## Demo06: CSS模块([source](https://github.com/ruanyf/webpack-demos/tree/master/demo06))
+## Demo06: CSS Module([source](https://github.com/ruanyf/webpack-demos/tree/master/demo06))
 
 带查询参数`modules`的css-loader将CSS文件变为一个[CSS模块](https://github.com/css-modules/css-modules)，模块里的CSS都是局部定义的。你可以使用`:global(selector)`([详情](https://css-modules.github.io/webpack-demo/))将CSS变为全局的。
 
@@ -464,7 +464,7 @@ $ npm run dev
 
 访问http://127.0.0.1:8080 ，你将发现只有第二个`h1`是红色的，因为它的CSS是局部的；而两个`h2`都是蓝色的，因为它的CSS是全局的。
 
-## Demo07: UglifyJs插件([source](https://github.com/ruanyf/webpack-demos/tree/master/demo07))
+## Demo07: UglifyJs Plugin ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo07))
 
 Webpack通过插件体系来扩展它的功能。例如，[UglifyJs插件](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/)能够压缩输出的JS文件(`bundle.js`)。
 
