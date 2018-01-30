@@ -675,12 +675,11 @@ $ npm run dev
 ```javascript
 // main.js
 
-// 现在a.js被请求，它将被打包进另一个文件
+// 现在导入请求a.js，将它打包进另一个文件
 var load = require('bundle-loader!./a.js');
 
-// To wait until a.js is available (and get the exports)
-//  you need to async wait for it.
-// 
+// 等待a.js载入并获得它导出的内容
+// 你需要异步等待它
 load(function(file) {
   document.open();
   document.write('<h1>' + file + '</h1>');
@@ -688,13 +687,13 @@ load(function(file) {
 });
 ```
 
-`require('bundle-loader!./a.js')` tells Webpack to load `a.js` from another chunk.
+`require('bundle-loader!./a.js')`告诉Webpack从另一个块中载入`a.js`。
 
-Now Webpack will build `main.js` into `bundle.js`, and `a.js` into `0.bundle.js`.
+现在Webpack将会把`main.js`打包成`bundle.js`，把`a.js`打包成`0.bundle.js`。
 
-## Demo12: Common chunk ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo12))
+## Demo12: 共同块 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo12))
 
-When multi scripts have common chunks, you can extract the common part into a separate file with [CommonsChunkPlugin](https://webpack.js.org/plugins/commons-chunk-plugin/), which is useful for browser caching and saving bandwidth.
+当多个脚本有共同的代码块时，你可以用[CommonsChunkPlugin](https://webpack.js.org/plugins/commons-chunk-plugin/)将它们导入一个单独的文件，这有助于浏览器缓存以及节省带宽。
 
 ```javascript
 // main1.jsx
@@ -730,7 +729,7 @@ index.html
 </html>
 ```
 
-The above `commons.js` is the common chunk of `main1.jsx` and `main2.jsx`. As you can imagine, `commons.js` includes `react` and `react-dom`.
+以上的`commons.js`是`main1.jsx`和`main2.jsx`的共同代码块。正如所料，`commons.js`包含了`react`和`react-dom`。
 
 webpack.config.js
 
@@ -762,18 +761,18 @@ module.exports = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: "commons",
-      // (the commons chunk name)
+      // （共同块的名称）
 
       filename: "commons.js",
-      // (the filename of the commons chunk)
+      // （共同块的文件名）
     })
   ]
 }
 ```
 
-## Demo13: Vendor chunk ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo13))
+## Demo13: 依赖块 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo13))
 
-You can also extract the vendor libraries from a script into a separate file with CommonsChunkPlugin.
+通过CommonsChunkPlugin，你也能将依赖库从脚本中导入一个单独的文件。
 
 main.js
 
@@ -816,9 +815,9 @@ module.exports = {
 };
 ```
 
-In above codes, `entry.vendor: ['jquery']` tells Webpack that `jquery` should be included in the common chunk `vendor.js`.
+上面的代码中，`entry.vendor: ['jquery']`告诉Webpack应该将`jquery`包含在共同的代码块`vendor.js`中。
 
-If you want a module available as a global variable in every module, such as making `$` and `jQuery` available in every module without writing `require("jquery")`. You should use `ProvidePlugin` ([Official doc](https://webpack.js.org/plugins/provide-plugin/)) which automatically loads modules instead of having to import or require them everywhere.
+如果你想一个模块变量全局生效，例如不通过`require("jquery")`就在每一个模块中使用`$`和`jQuery`。你应该使用`ProvidePlugin` ([官方文档](https://webpack.js.org/plugins/provide-plugin/))，它能不用特意引入而自动载入模块。
 
 ```javascript
 // main.js
@@ -844,13 +843,14 @@ module.exports = {
 };
 ```
 
-Of course, in this case, you should load `jquery.js` globally by yourself.
+当然，在这个例子中，你应该自己全局导入`jquery.js`。
 
-## Demo14: Exposing global variables ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo14))
+## Demo14: 暴露全局变量 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo14))
 
 If you want to use some global variables, and don't want to include them in the Webpack bundle, you can enable `externals` field in `webpack.config.js` ([official document](https://webpack.js.org/configuration/externals/)).
 
-For example, we have a `data.js`.
+
+例如，我们有一个`data.js`。
 
 ```javascript
 // data.js
@@ -868,9 +868,9 @@ index.html
 </html>
 ```
 
-Attention, Webpack will only build `bundle.js`, but not `data.js`.
+注意，Webpack只会生成`bundle.js`，而不会生成`data.js`。
 
-We can expose `data` as a global variable.
+我们可以将`data`暴露为一个全局变量。
 
 ```javascript
 // webpack.config.js
@@ -894,14 +894,13 @@ module.exports = {
     ]
   },
   externals: {
-    // require('data') is external and available
-    //  on the global var data
+    // 通过require('data')导入data.js即可全局生效
     'data': 'data'
   }
 };
 ```
 
-Now, you require `data` as a module variable in your script. but it actually is a global variable.
+现在，你在脚本里像模块变量一样导入`data`，但实际上它是一个全局变量。
 
 ```javascript
 // main.jsx
@@ -915,7 +914,7 @@ ReactDOM.render(
 );
 ```
 
-You could also put `react` and `react-dom` into `externals`, which will greatly decreace the building time and building size of `bundle.js`.
+你也能将`react`和`react-dom`放入`externals`里，这将极大地减小`bundle.js`的编译时间和大小。
 
 ## Demo15: React router ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo15))
 
