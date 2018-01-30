@@ -87,14 +87,14 @@ Some command-line options you should know.
 
 ## 目录
 
-1. [入口文件](#demo01-entry-file-source)
-1. [多个入口文件](#demo02-multiple-entry-files-source)
+1. [入口文件](#demo01-入口文件-source)
+1. [多个入口文件](#demo02-多个入口文件-source)
 1. [Babel-loader](#demo03-babel-loader-source)
 1. [CSS-loader](#demo04-css-loader-source)
 1. [Image loader](#demo05-image-loader-source)
-1. [CSS模块](#demo06-css-module-source)
-1. [UglifyJs插件](#demo07-uglifyjs-plugin-source)
-1. [HTML Webpack Plugin and Open Browser Webpack Plugin](#demo08-html-webpack-plugin-and-open-browser-webpack-plugin-source)
+1. [CSS模块](#demo06-CSS模块-source)
+1. [UglifyJs插件](#demo07-UglifyJs插件-source)
+1. [HTML Webpack插件和Open Browser Webpack插件](#demo08-HTML Webpack插件和Open Browser Webpack插件-source)
 1. [Environment flags](#demo09-environment-flags-source)
 1. [Code splitting](#demo10-code-splitting-source)
 1. [Code splitting with bundle-loader](#demo11-code-splitting-with-bundle-loader-source)
@@ -103,7 +103,7 @@ Some command-line options you should know.
 1. [Exposing Global Variables](#demo14-exposing-global-variables-source)
 1. [React router](#demo15-react-router-source)
 
-## Demo01: 入口文件([source](https://github.com/ruanyf/webpack-demos/tree/master/demo01))
+## Demo01: 入口文件 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo01))
 
 Webpack读取入口文件来生成`bundle.js`。
 
@@ -369,7 +369,7 @@ module.exports = {
 <img src="4853ca667a2b8b8844eb2693ac1b2578.png">
 ```
 
-## Demo06: CSS Module([source](https://github.com/ruanyf/webpack-demos/tree/master/demo06))
+## Demo06: CSS模块 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo06))
 
 带查询参数`modules`的css-loader将CSS文件变为一个[CSS模块](https://github.com/css-modules/css-modules)，模块里的CSS都是局部定义的。你可以使用`:global(selector)`([详情](https://css-modules.github.io/webpack-demo/))将CSS变为全局的。
 
@@ -464,9 +464,9 @@ $ npm run dev
 
 访问http://127.0.0.1:8080 ，你将发现只有第二个`h1`是红色的，因为它的CSS是局部的；而两个`h2`都是蓝色的，因为它的CSS是全局的。
 
-## Demo07: UglifyJs Plugin ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo07))
+## Demo07: UglifyJs插件 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo07))
 
-Webpack通过插件体系来扩展它的功能。例如，[UglifyJs插件](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/)能够压缩输出的JS文件(`bundle.js`)。
+Webpack通过插件体系来扩展它的功能。例如，[UglifyJs插件](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/)能够压缩输出(`bundle.js`)的JS代码。
 
 main.js
 
@@ -503,17 +503,17 @@ module.exports = {
 };
 ```
 
-After launching the server, `main.js` will be minified into following.
+在启动server之后，`main.js`将会被压缩成下面这样。
 
 ```javascript
 var o="Hello";o+=" World",document.write("<h1>"+o+"</h1>")
 ```
 
-## Demo08: HTML Webpack Plugin and Open Browser Webpack Plugin ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo08))
+## Demo08: HTML Webpack插件和Open Browser Webpack插件 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo08))
 
-This demo shows you how to load 3rd-party plugins.
+这个demo像你演示如何载入第三方插件。
 
-[html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin) could create `index.html` for you, and [open-browser-webpack-plugin](https://github.com/baldore/open-browser-webpack-plugin) could open a new browser tab when Webpack loads.
+[html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin)能够为你创建`index.html`，而[open-browser-webpack-plugin](https://github.com/baldore/open-browser-webpack-plugin)当Webpack载入时能够打开一个新的浏览器标签页。
 
 main.js
 
@@ -544,18 +544,18 @@ module.exports = {
 };
 ```
 
-Launch the server.
+启动server。
 
 ```bash
 $ cd demo08
 $ npm run dev
 ```
 
-Now you don't need to write `index.html` by hand and don't have to open browser by yourself. Webpack did all these things for you.
+现在你不必再手写`index.html`了，也不必再自己打开浏览器了。Webpack将会为你做这些事。
 
-## Demo09: Environment flags ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo09))
+## Demo09: 环境标志 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo09))
 
-You can enable some codes only in development environment with environment flags.
+你可以通过环境标志让某些代码仅在开发环境下有效。
 
 main.js
 
@@ -595,7 +595,7 @@ module.exports = {
 };
 ```
 
-Now pass environment variable into webpack. Opening `demo09/package.json`, you should find `scripts` field as following.
+现在把环境变量传递给webpack。打开`demo09/package.json`，你应该会发现`scripts`变成了这样：
 
 ```javascript
 // package.json
@@ -608,18 +608,18 @@ Now pass environment variable into webpack. Opening `demo09/package.json`, you s
 }
 ```
 
-Launch the server.
+启动server。
 
 ```javascript
 $ cd demo09
 $ npm run dev
 ```
 
-## Demo10: Code splitting ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo10))
+## Demo10: 代码拆分 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo10))
 
-For big web apps, it’s not efficient to put all code into a single file. Webpack allows you to split a large JS file into several chunks. Especially, if some blocks of code are only required under some circumstances, these chunks could be loaded on demand.
+对于大型web应用来说，将所有的代码写进一个文件效率会很低。Webpack允许你将大的JS文件拆分成若干个小的代码块（chunk)。尤其在一些代码块仅在某些情况下才使用时，这些代码块应该按需加载。
 
-Webpack uses `require.ensure` to define a split point ([official document](http://webpack.github.io/docs/code-splitting.html)).
+Webpack使用`require.ensure`去定义一个拆分点([官方文档](https://webpack.js.org/guides/code-splitting/))。
 
 ```javascript
 // main.js
@@ -631,14 +631,14 @@ require.ensure(['./a'], function (require) {
 });
 ```
 
-`require.ensure` tells Webpack that `./a.js` should be separated from `bundle.js` and built into a single chunk file.
+`require.ensure`告诉Webpack`./a.js`应该从`bundle.js`中分离出来，并打包成一个单独的块文件。
 
 ```javascript
 // a.js
 module.exports = 'Hello World';
 ```
 
-Now Webpack takes care of the dependencies, output files and runtime stuff. You don't have to put any redundancy into your `index.html` and `webpack.config.js`.
+现在Webpack将会关心依赖、输出文件和运行时环境。而你不必往`index.html`和`webpack.config.js`里添加任何东西。
 
 ```html
 <html>
@@ -659,27 +659,28 @@ module.exports = {
 };
 ```
 
-Launch the server.
+启动server。
 
 ```bash
 $ cd demo10
 $ npm run dev
 ```
 
-On the surface, you won't feel any differences. However, Webpack actually builds `main.js` and `a.js` into different chunks(`bundle.js` and `0.bundle.js`), and loads `0.bundle.js` from `bundle.js` when on demand.
+表面上，你不会感觉到任何变化。然而，Webpack实际上将`main.js`和`a.js`打包成了不同的块（`bundle.js`和`0.bundle.js`)，并且在需要时从`bundle.js`载入`0.bundle.js`。
 
-## Demo11: Code splitting with bundle-loader ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo11))
+## Demo11: 使用bundle-loader进行代码分割 ([source](https://github.com/ruanyf/webpack-demos/tree/master/demo11))
 
-Another way of code splitting is using [bundle-loader](https://www.npmjs.com/package/bundle-loader).
+另一种代码分割的方式是使用[bundle-loader](https://www.npmjs.com/package/bundle-loader)。
 
 ```javascript
 // main.js
 
-// Now a.js is requested, it will be bundled into another file
+// 现在a.js被请求，它将被打包进另一个文件
 var load = require('bundle-loader!./a.js');
 
 // To wait until a.js is available (and get the exports)
 //  you need to async wait for it.
+// 
 load(function(file) {
   document.open();
   document.write('<h1>' + file + '</h1>');
